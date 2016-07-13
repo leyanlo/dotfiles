@@ -11,6 +11,9 @@ function color_my_prompt {
 }
 color_my_prompt
 
+# z
+. ~/bin/z.sh
+
 # Set Sublime as default editor, from http://stackoverflow.com/a/16495202
 export PATH=/bin:/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$PATH
 export EDITOR='subl -w'
