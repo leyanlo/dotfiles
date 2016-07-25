@@ -1,17 +1,7 @@
 {
 	"installed_packages":
 	[
-		"All Autocomplete",
-		"DocBlockr",
-		"GitGutter",
-		"GitSyntaxes",
-		"Gutter Color",
-		"Markdown Extended",
-		"Markdown Preview",
-		"Monokai Extended",
-		"Open Finder",
 		"Package Control",
-		"Package Syncing",
-		"TrailingSpaces"
+		"Package Syncing" // Set Sync Folder to ~/Dropbox/Software/Sublime
 	]
 }
