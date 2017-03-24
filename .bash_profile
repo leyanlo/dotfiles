@@ -18,7 +18,9 @@ color_my_prompt
 export PATH=/bin:/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$PATH
 export EDITOR='subl -w'
 
-# git bash-completion
+# git-completion
+# 1. Install brew
+# 2. Run `brew install git && brew install bash-completion`
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
