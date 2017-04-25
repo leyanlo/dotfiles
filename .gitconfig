@@ -19,5 +19,7 @@
     ra = !git r --all
     l = "!. ~/.githelpers && pretty_git_log"
     la = !git l --all
+    # Start repo with empty commit
+    start = !git init && git commit --allow-empty -m \"Initial commit\"
 [push]
     default = simple
