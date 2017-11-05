@@ -16,7 +16,7 @@
     pullff = pull --ff-only
     noff = merge --no-ff
     fa = fetch --all
-    pom = push origin master
+    pom = push origin HEAD:master
     b = branch
     ds = diff --stat=160,120
     dh1 = diff HEAD~1
