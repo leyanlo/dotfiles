@@ -21,6 +21,4 @@ export EDITOR='subl -w'
 # git-completion
 # 1. Install brew
 # 2. Run `brew install git && brew install bash-completion`
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
