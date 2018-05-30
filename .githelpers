@@ -25,7 +25,7 @@ LOG_AUTHOR="%C(bold blue)<%an>%Creset"
 LOG_REFS="%C(bold red)%d%Creset"
 LOG_SUBJECT="%s"
 
-LOG_FORMAT="$LOG_HASH}$LOG_RELATIVE_TIME}$LOG_AUTHOR}$LOG_REFS $LOG_SUBJECT"
+LOG_FORMAT="}$LOG_HASH}$LOG_RELATIVE_TIME}$LOG_AUTHOR}$LOG_REFS $LOG_SUBJECT"
 
 BRANCH_PREFIX="%(HEAD)"
 BRANCH_REF="%(color:red)%(color:bold)%(refname:short)%(color:reset)"
@@ -77,6 +77,8 @@ pretty_git_format() {
     sed -Ee 's/(^[^<]*) ago\)/\1)/' |
     # Replace (2 years, 5 months) with (2 years)
     sed -Ee 's/(^[^<]*), [[:digit:]]+ .*months?\)/\1)/' |
+    # Remove colors from graph, since escaped color codes affect column alignments
+    perl -pe 's/\x1b\[[0-9;]*m([\|\\\/_\-\.])\x1b\[m/\1/g' |
     # Line columns up based on } delimiter
     column -s '}' -t |
     # Color merge commits specially
