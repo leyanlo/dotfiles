@@ -48,5 +48,8 @@
 
     # Start repo with empty commit
     start = !git init && git commit --allow-empty -m \"Initial commit\"
+
+    # Delete all branches already merged into the current branch
+    cleanup = !git branch --merged | grep -v \"*\" | xargs -n 1 git branch -d
 [push]
     default = simple
