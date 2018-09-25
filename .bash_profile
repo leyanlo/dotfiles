@@ -17,10 +17,12 @@ color_my_prompt
 . ~/bin/z.sh
 
 # Set Sublime as default editor, from http://stackoverflow.com/a/16495202
-export PATH=/bin:/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=/bin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:$PATH
 export EDITOR='subl -w'
 
 # git-completion
 # 1. Install brew
 # 2. Run `brew install git && brew install bash-completion`
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+eval "$(rbenv init -)"
