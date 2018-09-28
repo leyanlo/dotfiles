@@ -16,9 +16,8 @@ color_my_prompt
 # z
 . ~/bin/z.sh
 
-# Set Sublime as default editor, from http://stackoverflow.com/a/16495202
 export PATH=/bin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:$PATH
-export EDITOR='subl -w'
+export EDITOR='code --wait' # Set Visual Studio Code as default editor
 
 # git-completion
 # 1. Install brew
