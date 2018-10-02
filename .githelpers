@@ -58,6 +58,8 @@ pretty_git_format() {
     sed -Ee 's/(^[^<]*) ago\)/\1)/' |
     # Replace (2 years, 5 months) with (2 years)
     sed -Ee 's/(^[^<]*), [[:digit:]]+ .*months?\)/\1)/' |
+    # Replace (tag: a, tag: b, tag: c) with (tag: a, …)
+    sed -Ee 's/(tag: [^,]+, )tag: [^\)]+\)/\1…\)/' |
     # Line columns up based on } delimiter
     column -s '}' -t
 }
