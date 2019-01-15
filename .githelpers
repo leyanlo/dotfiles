@@ -25,7 +25,7 @@ LOG_AUTHOR="%C(always,blue)<%an>%C(always,reset)"
 LOG_REFS="%C(always,red)%d%C(always,reset)"
 LOG_SUBJECT="%s"
 
-LOG_FORMAT="}$LOG_HASH}$LOG_RELATIVE_TIME}$LOG_AUTHOR}$LOG_REFS $LOG_SUBJECT"
+LOG_FORMAT="|$LOG_HASH|$LOG_RELATIVE_TIME|$LOG_AUTHOR|$LOG_REFS $LOG_SUBJECT"
 
 BRANCH_PREFIX="%(HEAD)"
 BRANCH_REF="%(color:red)%(color:bold)%(refname:short)%(color:reset)"
@@ -34,7 +34,7 @@ BRANCH_DATE="%(color:green)(%(committerdate:relative))%(color:reset)"
 BRANCH_AUTHOR="%(color:blue)%(color:bold)<%(authorname)>%(color:reset)"
 BRANCH_CONTENTS="%(contents:subject)"
 
-BRANCH_FORMAT="$BRANCH_PREFIX}$BRANCH_REF}$BRANCH_HASH}$BRANCH_DATE}$BRANCH_AUTHOR}$BRANCH_CONTENTS"
+BRANCH_FORMAT="$BRANCH_PREFIX|$BRANCH_REF|$BRANCH_HASH|$BRANCH_DATE|$BRANCH_AUTHOR|$BRANCH_CONTENTS"
 
 show_git_head() {
     pretty_git_log -1
@@ -59,7 +59,7 @@ pretty_git_format() {
     # Replace (2 years, 5 months) with (2 years)
     sed -Ee 's/(^[^<]*), [[:digit:]]+ .*months?\)/\1)/' |
     # Line columns up based on } delimiter
-    column -s '}' -t
+    column -s '|' -t
 }
 
 git_page_maybe() {
