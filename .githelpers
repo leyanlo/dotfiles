@@ -42,7 +42,7 @@ show_git_head() {
 }
 
 pretty_git_log() {
-    git log --graph --pretty="tformat:${LOG_FORMAT}" $* | pretty_git_format | git_page_maybe
+    git log --graph --pretty="tformat:${LOG_FORMAT}" --decorate=short --decorate-refs-exclude="tags/phabricator/*" $* | pretty_git_format | git_page_maybe
 }
 
 pretty_git_branch() {
@@ -58,9 +58,6 @@ pretty_git_format() {
     sed -Ee 's/(^[^<]*) ago\)/\1)/' |
     # Replace (2 years, 5 months) with (2 years)
     sed -Ee 's/(^[^<]*), [[:digit:]]+ .*months?\)/\1)/' |
-    # Replace (tag: phabricator/base/12345) with (…)
-    # TODO: Figure out how to get --decorate-refs-exclude to play nicely with --pretty and get a solution like https://stackoverflow.com/a/47839149/759772
-    sed -Ee 's/tag: phabricator\/base\/[[:digit:]]+/…/g' |
     # Line columns up based on } delimiter
     column -s '}' -t
 }
