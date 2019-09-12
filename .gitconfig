@@ -33,7 +33,7 @@
     bas = !git bs --all
 
     # Start repo with empty commit
-    start = !git init && git commit --allow-empty -m \"Initial commit\"
+    start = !git init && git commit --allow-empty -m \"chore: initial commit\"
 
     # Delete all branches already merged into the current branch
     cleanup = !git branch --merged | grep -v \"*\" | xargs -n 1 git branch -d
