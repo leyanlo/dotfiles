@@ -1,3 +1,6 @@
+# add color for ls
+export CLICOLOR=1
+
 # initialize prompt
 function init_prompt {
   # load version control information
@@ -23,5 +26,5 @@ export PATH=/bin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:$PATH
 # set vscode as default editor
 export EDITOR='code --wait'
 
-# git-completion
-autoload -U compinit && compinit
+# load git-completion
+autoload -Uz compinit && compinit
