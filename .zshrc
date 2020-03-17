@@ -9,11 +9,12 @@ function init_prompt {
   precmd() { vcs_info }
 
   # format vcs_info_msg_0_ variable
-  zstyle ':vcs_info:git:*' formats '%F{red}(%b)%f'
+  zstyle ':vcs_info:git:*' formats ' [%b]'
+  zstyle ':vcs_info:git:*' actionformats ' [%b|%a]'
 
   # initialize prompt (with git branch name)
   setopt PROMPT_SUBST
-  PROMPT=$'\n''%B%F{green}%n@%m%f:%F{blue}%~%f ${vcs_info_msg_0_}%b'$'\n''%% '
+  PROMPT=$'\n''%B%F{green}%n@%m%f:%F{blue}%~%f%F{red}${vcs_info_msg_0_}%f%b'$'\n''%% '
 }
 init_prompt
 
