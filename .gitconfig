@@ -1,6 +1,8 @@
 [user]
     name = Leyan Lo
     email = leyanlo@gmail.com
+[branch]
+    autosetuprebase = always
 [diff]
 [color]
     ui = auto
