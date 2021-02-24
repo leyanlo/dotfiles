@@ -42,4 +42,4 @@
 [push]
     default = simple
 [init]
-    templateDir = ~/.config/git/template/
+    defaultBranch = main
