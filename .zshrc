@@ -25,6 +25,7 @@ init_prompt
 export PATH=/bin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:$PATH
 
 # set vscode as default editor
+export VISUAL='code --wait'
 export EDITOR='code --wait'
 
 # load git-completion
