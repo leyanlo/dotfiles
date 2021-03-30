@@ -34,6 +34,13 @@
     ba = !git b --all
     bas = !git bs --all
 
+    # Native log aliases, which can accept double-dash params, e.g. git ll -- path/to/folder
+    hh = rr -1
+    rr = ll -30
+    rra = rr --all
+    ll = log --graph --pretty=format:'%C(yellow)%h%C(reset) %C(green)(%ar)%C(reset) %C(blue)<%an>%C(reset)%C(red)%d%C(reset) %s' --decorate=short --decorate-refs-exclude="tags/phabricator/*"
+    lla = ll --all
+
     # Start repo with empty commit
     start = !git init && git commit --allow-empty -m \"chore: initial commit\"
 
