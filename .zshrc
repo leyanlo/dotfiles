@@ -14,8 +14,7 @@ function init_prompt {
 
   # initialize prompt (with git branch name)
   setopt PROMPT_SUBST
-  PROMPT=$'\n''%B%F{green}%n@%m%f:%F{blue}%~%f%F{red}${vcs_info_msg_0_}%f%b'$'\n''%% '
-  RPROMPT=$'%F{240}%D{%Y-%m-%dT%H:%M:%S}%f'
+  PROMPT=$'\n''%F{240}%D{%Y-%m-%dT%H:%M:%S}%f %B%F{green}%n@%m%f:%F{blue}%~%f%F{red}${vcs_info_msg_0_}%f%b'$'\n''%% '
 }
 init_prompt
 
