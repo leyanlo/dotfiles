@@ -21,9 +21,6 @@ init_prompt
 # initialize z
 . ~/bin/z.sh
 
-# initialize path
-export PATH=/bin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:$PATH
-
 # set vscode as default editor
 export VISUAL='code --wait'
 export EDITOR='code --wait'
