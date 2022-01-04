@@ -2,7 +2,7 @@
 export CLICOLOR=1
 
 # initialize prompt
-function init_prompt {
+function init-prompt {
   # load version control information
   autoload -Uz vcs_info
   zstyle ':vcs_info:*' enable git svn
@@ -16,7 +16,7 @@ function init_prompt {
   setopt PROMPT_SUBST
   PROMPT=$'\n''%F{240}%D{%Y-%m-%dT%H:%M:%S}%f %B%F{green}%n@%m%f:%F{blue}%~%f%F{red}${vcs_info_msg_0_}%f%b'$'\n''%% '
 }
-init_prompt
+init-prompt
 
 # initialize z
 . ~/bin/z.sh
@@ -28,29 +28,25 @@ export EDITOR='code --wait'
 # load git-completion
 autoload -Uz compinit && compinit
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# fnm
+[ -x "$(command -v fnm)" ] && eval "$(fnm env)"
 
-# automatically switch nvm
+# automatically switch node version
 autoload -U add-zsh-hook
+prev_nvm_path=""
 load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
+  local nvm_path=$PWD
+  while [[ "$nvm_path" != "" && ! -e "$nvm_path/.nvmrc" ]]; do
+    nvm_path=${nvm_path%/*}
+  done
 
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
+  if [[ "$nvm_path" != "$prev_nvm_path" ]]; then
+    if [[ -z "$nvm_path" ]]; then
+      fnm use default
+    else
+      fnm use $(cat "$nvm_path/.nvmrc")
     fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
+    prev_nvm_path="$nvm_path"
   fi
 }
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+add-zsh-hook chpwd load-nvmrc && load-nvmrc
