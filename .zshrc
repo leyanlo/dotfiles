@@ -21,9 +21,12 @@ init-prompt
 # initialize z
 . ~/bin/z.sh
 
-# set vscode as default editor
-export VISUAL='code --wait'
-export EDITOR='code --wait'
+# initialize path
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+
+# set Sublime as default editor
+export VISUAL='subl --wait'
+export EDITOR='subl --wait'
 
 # load git-completion
 autoload -Uz compinit && compinit
