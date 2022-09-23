@@ -1,3 +1,6 @@
+# allow comments in zsh
+setopt interactivecomments
+
 # add color for ls
 export CLICOLOR=1
 
