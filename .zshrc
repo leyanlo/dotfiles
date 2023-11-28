@@ -25,7 +25,7 @@ init-prompt
 . ~/bin/z.sh
 
 # initialize path
-export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:/Applications/WebStorm.app/Contents/MacOS:$PATH"
 
 # set Sublime as default editor
 export VISUAL='subl --wait'
