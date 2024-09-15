@@ -31,6 +31,9 @@ export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:/Applicat
 export VISUAL='subl --wait'
 export EDITOR='subl --wait'
 
+# add alias for webstorm
+alias ws="webstorm"
+
 # load git-completion
 autoload -Uz compinit && compinit
 
