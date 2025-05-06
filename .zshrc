@@ -61,4 +61,4 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc && load-nvmrc
 
 # cache nodejs
-export NODE_COMPILE_CACHE=~/.cache /nodejs-compile-cache
+export NODE_COMPILE_CACHE=~/.cache/nodejs-compile-cache
