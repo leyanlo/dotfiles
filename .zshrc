@@ -4,6 +4,9 @@ setopt interactivecomments
 # add color for ls
 export CLICOLOR=1
 
+# Load private environment variables without committing them to dotfiles.
+[[ ! -r "$HOME/.env.local" ]] || source "$HOME/.env.local"
+
 # initialize prompt
 function init-prompt {
   # load version control information
@@ -34,13 +37,21 @@ export EDITOR='subl --wait'
 # add alias for webstorm
 alias ws="webstorm"
 
-# load git-completion
-autoload -Uz compinit && compinit
+# Rebuild and audit completions at most once every 24 hours.
+autoload -Uz compinit
+typeset -a stale_completion_dumps
+stale_completion_dumps=("$HOME"/.zcompdump(N.mh+24))
+if [[ ! -f "$HOME/.zcompdump" ]] || (( ${#stale_completion_dumps} )); then
+  compinit
+else
+  compinit -C
+fi
+unset stale_completion_dumps
 
-# fnm
-[ -x "$(command -v fnm)" ] && eval "$(fnm env)"
+# Initialize fnm.
+eval "$(fnm env)"
 
-# automatically switch node version
+# Automatically switch Node versions based on the nearest .nvmrc.
 autoload -U add-zsh-hook
 prev_nvm_path=""
 load-nvmrc() {
@@ -53,7 +64,7 @@ load-nvmrc() {
     if [[ -z "$nvm_path" ]]; then
       fnm use default
     else
-      fnm use $(cat "$nvm_path/.nvmrc")
+      fnm use --install-if-missing "$(< "$nvm_path/.nvmrc")"
     fi
     prev_nvm_path="$nvm_path"
   fi
